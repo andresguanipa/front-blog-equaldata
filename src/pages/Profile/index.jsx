@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateName } from '../../actions/auth'
 import './styles.css';
-import { messageError, TabTitle } from '../../utils/GeneralFunctions';
+import { disableButton, enableButton, messageError, TabTitle } from '../../utils/GeneralFunctions';
 
 const Profile = () => {
 
@@ -46,6 +46,7 @@ const Profile = () => {
 
    const onSubmitForm = (e) => {
       e.preventDefault();
+      disableButton();
 
       if (category === "1") {
 
@@ -109,6 +110,8 @@ const Profile = () => {
          }
 
       }
+      
+      enableButton();
 
    }
 
@@ -151,7 +154,7 @@ const Profile = () => {
                            <br />
 
                            <div className="field">
-                              <input type="submit" value="Cambiar nombre"></input>
+                              <input type="submit" value="Cambiar nombre" id='submit-button'></input>
                            </div>
                            <br />
                         </>
@@ -176,7 +179,7 @@ const Profile = () => {
                            <br />
 
                            <div className="field">
-                              <input type="submit" value="Cambiar contraseña"></input>
+                              <input type="submit" value="Cambiar contraseña" id='submit-button'></input>
                            </div>
                            <br />
 

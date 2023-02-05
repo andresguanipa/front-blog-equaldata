@@ -5,7 +5,7 @@ import axios from '../../config/axios';
 import Footer from '../../components/common/Footer';
 import { useSelector } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
-import { messageError, TabTitle } from '../../utils/GeneralFunctions';
+import { disableButton, enableButton, messageError, TabTitle } from '../../utils/GeneralFunctions';
 
 const Upload = () => {
 
@@ -36,6 +36,7 @@ const Upload = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
+        disableButton();
 
         if (values.title !== '' && values.content !== '' && values.category !== '' && values.imgAuthor !== '' && File) {
 
@@ -110,6 +111,8 @@ const Upload = () => {
             messageError('Por favor, llene todos los campos.');
 
         }
+
+        enableButton();
 
     }
 

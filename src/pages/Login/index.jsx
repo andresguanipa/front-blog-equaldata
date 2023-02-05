@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
 import { loginUserPassword } from '../../actions/auth';
-import { messageError, TabTitle } from '../../utils/GeneralFunctions';
+import { disableButton, enableButton, messageError, TabTitle } from '../../utils/GeneralFunctions';
 import './styles.css';
 
 const Login = () => {
@@ -24,6 +24,7 @@ const Login = () => {
 
    const onSubmitForm = (e) => {
       e.preventDefault();
+      disableButton();
 
       if (values.password !== '' && values.username !== '') {
 
@@ -34,6 +35,8 @@ const Login = () => {
          messageError('Debe llenar todos los campos');
 
       }
+
+      enableButton();
 
    }
 

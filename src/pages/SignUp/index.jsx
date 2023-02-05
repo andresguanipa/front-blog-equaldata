@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useForm } from '../../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../actions/auth';
-import { messageError, TabTitle } from '../../utils/GeneralFunctions';
+import { disableButton, enableButton, messageError, TabTitle } from '../../utils/GeneralFunctions';
 import './styles.css';
 import { URL_IMG } from '../../config/constant';
 
@@ -35,6 +35,7 @@ function SignUp() {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
+    disableButton();
 
 
     if (nameSignup !== "" && usernameSignup !== "" && passwordSignup !== "" && repeatPasswordSignup !== "") {
@@ -86,6 +87,8 @@ function SignUp() {
       messageError('Por favor, llene todos los campos.');
 
     }
+    
+    enableButton()
 
   }
 
