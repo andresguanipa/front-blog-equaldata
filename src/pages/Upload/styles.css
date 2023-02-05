@@ -1,0 +1,145 @@
+
+body{
+    background-color: #fff;
+}
+
+a{
+    text-decoration: none;
+    top: 50px;
+}
+
+.contact-form {
+    max-width: 35%;
+    margin: 30px auto;
+}
+
+.contact {
+    width: 100%;
+    background-color: #030207;
+    padding: 4% 0% 3% 0%;
+}
+
+.h2-contact {
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.p-contact {
+    font-size: 25px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+}
+
+.feedback-input {
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 5px;
+    line-height: 22px;
+    background-color: transparent;
+    border: 1px solid #FFF;
+    transition: all 0.3s;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+.feedback-input:focus {
+    border: 2px solid #FFF;
+}
+
+textarea {
+    height: 300px;
+    line-height: 150%;
+    resize: none;
+}
+
+.button-contact {
+    width: 100%;
+    background: #FFF;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    color: #030207;
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 700;
+    border: 2px solid #030207;
+}
+
+.button-contact:hover {
+    background: #030207;
+    color: #fff;
+    border: 2px solid #fff;
+
+
+}
+
+option {
+    color: #000;
+}
+
+@media (max-width: 1180px) {
+
+    .contact-form {
+        max-width: 45%;
+    }
+
+}
+
+@media (max-width: 840px) {
+
+    .contact-form {
+        max-width: 60%;
+        margin: 25px auto;
+    }
+
+    .h2-contact {
+        font-size: 24px;
+        width: 80%;
+        margin: 0 auto;   
+    }
+    
+    .p-contact {
+        font-size: 20px;
+        margin-top: 10px;
+
+    }
+
+}
+
+@media (max-width: 580px) {
+
+    .contact-form {
+        max-width: 80%;
+        margin: 25px auto;
+    }
+
+    .feedback-input{
+        font-size: 15px;
+        padding: 11px;
+
+    }
+
+    textarea {
+        height: 120px;
+        line-height: 150%;
+        resize: none;
+    }
+
+    .button-contact {
+        font-size: 20px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+}

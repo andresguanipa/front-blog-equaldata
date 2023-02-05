@@ -1,0 +1,171 @@
+.intro img {
+    width: 100%;
+    padding-top: 8px;
+    background-color: #030207;
+}
+
+.intro h2 {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 700;
+    position: absolute;
+    margin-top: 13%;
+    margin-left: 7%;
+    width: 70%;
+    text-shadow: 10px 10px 12px rgba(0, 0, 0, 0.8);
+}
+
+.intro h4 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    position: absolute;
+    margin-top: 29%;
+    margin-left: 7%;
+    text-shadow: 10px 10px 12px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 1350px) {
+
+    .intro h2 {
+        font-size: 3.2rem;
+        margin-top: 12%;
+        width: 90%;
+    }
+
+    .intro h4 {
+        font-size: 1.6rem;
+        margin-top: 31%;
+    }
+
+}
+
+
+@media (max-width: 1160px) {
+
+    .intro h2 {
+        font-size: 2.8rem;
+        margin-top: 10%;
+    }
+
+    .intro h4 {
+        font-size: 1.6rem;
+        margin-top: 30%;
+
+    }
+
+}
+
+
+
+@media (max-width: 945px) {
+
+    .intro h2 {
+        font-size: 2.5rem;
+        margin-top: 9%;
+    }
+
+    .intro h4 {
+        font-size: 1.8rem;
+        margin-top: 31%;
+    }
+
+}
+
+
+
+@media (max-width: 785px) {
+
+    .intro h2 {
+        font-size: 2.3rem;
+        margin-top: 7%;
+    }
+
+    .intro h4 {
+        font-size: 1.5rem;
+        margin-top: 31%;
+    }
+
+}
+
+
+
+@media (max-width: 715px) {
+
+    .intro h2 {
+        font-size: 2rem;
+        margin-top: 6%;
+    }
+
+    .intro h4 {
+        font-size: 1.3rem;
+        margin-top: 30%;
+    }
+
+}
+
+
+
+@media (max-width: 620px) {
+
+
+    .intro h4 {
+        margin-top: 37%;
+    }
+
+    .intro {
+        margin-bottom: 6%;
+    }
+
+}
+
+
+
+@media (max-width: 570px) {
+
+    .intro h2 {
+        font-size: 1.8rem;
+        margin-top: 5%;
+    }
+
+    .intro h4 {
+        font-size: 1rem;
+        margin-top: 52%;
+    }
+
+    .steve {
+        content: url("./images/steve.png");
+    }
+
+
+}
+
+
+
+@media (max-width: 470px) {
+
+    .intro h2 {
+        font-size: 2.1rem;
+        margin-top: 10%;
+    }
+
+    .intro h4 {
+        font-size: 1.3rem;
+        margin-top: 140%;
+    }
+
+    .intro {
+        margin-bottom: 10%;
+    }
+
+    .steve {
+        content: url("./images/steve3.png");
+    }
+
+    .intro img {
+        background-color: #000;
+    }
+    
+
+
+}

@@ -1,0 +1,152 @@
+.container {
+    max-width: 1140px;
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .content {
+    width: 100%;
+    background-color: white;
+    margin-top: 46%;
+  }
+  
+  .back {
+    background-size: 100%;
+    background-image: url("./images/back-4.png");
+    background-attachment: fixed;
+  }
+  
+  @media (max-width: 1350px) {
+  
+    .content {
+      margin-top: 53%;
+      background-color: white;
+    }
+  
+  
+  }
+  
+  @media (max-width: 1110px) {
+  
+    .content {
+      margin-top: 60%;
+      background-color: white;
+    }
+  
+  
+  }
+  
+  @media (max-width: 1020px) {
+  
+    .content {
+      margin-top: 64%;
+      background-color: white;
+    }
+  
+  }
+  
+  @media (max-width: 920px) {
+  
+    .content {
+      margin-top: 76%;
+    }
+  
+  
+  }
+  
+  @media (max-width: 820px) {
+  
+    .content {
+      margin-top: 80%;
+    }
+  
+  
+  }
+  
+  @media (max-width: 770px) {
+  
+    .content {
+      margin-top: 90%;
+    }
+  
+    .back  {
+      background-image: url("./images/back-6.png");
+  
+    }
+  
+  
+  }
+  
+  @media (max-width: 710px) {
+  
+    .content {
+      margin-top: 98%;
+  
+    }
+  
+  
+  }
+  
+  @media (max-width: 650px) {
+  
+    .content {
+      margin-top: 105%;
+    }
+  
+    .back  {
+      background-image: url("./images/back-7.png");
+  
+    }
+  
+  
+  }
+  
+  @media (max-width: 610px) {
+  
+    .content {
+      margin-top: 115%;
+    }
+  
+  
+  }
+  
+  @media (max-width: 570px) {
+  
+    .content {
+      margin-top: 127%;
+    }
+  
+  
+  }
+  
+  @media (max-width: 510px) {
+  
+    .content {
+      margin-top: 143%;
+    }
+  
+  
+  }
+  
+  @media (max-width: 470px) {
+  
+    .content {
+      margin-top: 148%;
+    }
+  
+    .back {
+      background-image: url("./images/back-8.png");
+  
+    }
+  
+  
+  }
+  
+  @media (max-width: 425px) {
+  
+    .content {
+      margin-top: 180%;
+    }
+  
+  
+  }
