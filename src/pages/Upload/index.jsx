@@ -12,13 +12,13 @@ const Upload = () => {
     const state = useSelector(state => state);
 
     const [values, handleInputChange] = useForm({
-        title: '',
-        content: '',
+        dni: '',
+        amount: '',
         category: '',
-        imgAuthor: ''
+        confirmationNumber: ''
     });
 
-    const { title, content, category, imgAuthor } = values;
+    const { dni, amount, confirmationNumber } = values;
 
 
     const [File, setFile] = useState();
@@ -35,85 +35,99 @@ const Upload = () => {
 
     const handleSubmit = async (e) => {
 
-        e.preventDefault();
-        disableButton();
+        try {
 
-        if (values.title !== '' && values.content !== '' && values.category !== '' && values.imgAuthor !== '' && File) {
+            e.preventDefault();
+            disableButton();
 
-            const filess = File;
-            const data = new FormData();
-            data.append("file", filess[0]);
-            data.append("upload_preset", "equaldata");
+            if (values.dni !== '' && values.amount !== '' && values.confirmationNumber !== '' && File) {
 
-            const res = await fetch("https://api.cloudinary.com/v1_1/dlvlxxe5t/upload", {
-                method: "POST",
-                body: data
-            })
+                const userExist = await axios.get(`/client/byDNI?dni=${values.dni}`);
 
-            if (res.ok) {
-                const file = await res.json();
-                console.log(file.secure_url);
+                if (userExist.data.ok) {
 
-                values.content = values.content.replace(/\n/g, '<br />');
+                    const filess = File;
+                    const data = new FormData();
+                    data.append("file", filess[0]);
+                    data.append("upload_preset", "equaldata");
 
-                axios.post('/publication/create',
-                    {
-                        title: values.title,
-                        content: values.content,
-                        img: file.secure_url,
-                        categories: values.category,
-                        imgAuthor: values.imgAuthor
+                    const res = await fetch("https://api.cloudinary.com/v1_1/dlvlxxe5t/upload", {
+                        method: "POST",
+                        body: data
+                    })
 
-                    }
-                ).then(res => {
+                    if (res.ok) {
+                        const file = await res.json();
+                        console.log(file.secure_url);
 
-                    if (res.data.ok) {
+                        values.amount = values.amount.replace(/\n/g, '<br />');
 
-                        document.getElementById('submit-button').disabled = false;
+                        axios.post('/payment/create',
+                            {
+                                idClient: userExist.data.data.idClient,
+                                amount: values.amount,
+                                billImage: file.secure_url,
+                                confirmationNumber: values.confirmationNumber
+                            }
+                        ).then(res => {
 
-                        document.getElementsByName('title')[0].value = '';
-                        document.getElementsByName('content')[0].value = '';
-                        document.getElementsByName('category')[0].value = '';
-                        document.getElementsByName('imgAuthor')[0].value = '';
-                        document.getElementsByName('imagen')[0].value = [];
+                            if (res.data.ok) {
 
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Listo!',
-                            text: 'La publicación fue subida exitosamente!',
-                            footer: 'Copyright © 2023 - Todos los derechos reservados',
-                        }).then(data => {
+                                document.getElementById('submit-button').disabled = false;
 
-                            window.location.href = "/"
+                                document.getElementsByName('dni')[0].value = '';
+                                document.getElementsByName('amount')[0].value = '';
+                                document.getElementsByName('confirmationNumber')[0].value = '';
+                                document.getElementsByName('imagen')[0].value = [];
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Done!',
+                                    text: 'The payment report was successfully completed!',
+                                    footer: 'SERVIMAINPER © 2023 - All Rights Reserved',
+                                })
+
+                            } else {
+
+                                messageError('An error has occurred, please check the fields and try again.');
+
+                            }
+
+                        }).catch(err => {
+
+                            console.log(err);
+                            messageError('An error has occurred, please try again later.');
 
                         })
 
                     } else {
 
-                        messageError('Ha ocurrido un error, por favor verifique los campos e intente nuevamente.');
+                        messageError('An error occurred while trying to upload the image, please check the image and try again.');
 
                     }
 
-                }).catch(err => {
+                } else {
+                    messageError('You are not registered, please contact the service administrator.');
+                }
 
-                    messageError('Ha ocurrido un error, por favor intente mas tarde.');
 
-                })
 
             } else {
 
-                messageError('Ha ocurrido un error al intentar subir la imagen, por favor revise la misma intente nuevamente.');
+                messageError('Please fill in all fields.');
 
             }
 
-        } else {
+            enableButton();
 
-            messageError('Por favor, llene todos los campos.');
+
+
+        } catch (e) {
+            enableButton();
+            console.log(e);
+            messageError('An error has occurred, please try again later.');
 
         }
-
-        enableButton();
-
     }
 
 
@@ -121,31 +135,19 @@ const Upload = () => {
 
         <>
             <div className="contact">
-                <h2 className='h2-contact'>Subir una publicación</h2>
-                <p className='p-contact'>Hola, {state.auth.firstname}.</p>
+                <h2 className='h2-contact'>Payment report</h2>
 
                 <div className='contact-form'>
-                    <input name="title" type="text" className="feedback-input" placeholder="Titulo" onChange={handleInputChange} value={title} required />
-                    <textarea name="content" className="feedback-input" placeholder="Contenido" onChange={handleInputChange} value={content} required></textarea>
-                    <select name="category" className='feedback-input' onChange={handleInputChange} value={category} required>
-                        <option value="" defaultValue>Categoria</option>
-                        <option value="De interés">De interés</option>
-                        <option value="Educacional">Educacional</option>
-                        <option value="Entretenimiento">Entretenimiento</option>
-                        <option value="Historia">Historia</option>
-                        <option value="Motivacional">Motivacional</option>
-                        <option value="Noticia">Noticia</option>
-                        <option value="Tecnología">Tecnología</option>
-                    </select>
+                    <input name="dni" type="text" className="feedback-input" placeholder="Type your ID" onChange={handleInputChange} value={dni} required />
+                    <input name="amount" type="text" className="feedback-input" placeholder="Amount to pay" onChange={handleInputChange} value={amount} required />
                     <input type="file" className='feedback-input' name="imagen" accept="image/png,image/jpeg,image/jpg" onChange={onChangeFile} />
-                    <input name="imgAuthor" type="text" className="feedback-input" placeholder="Origen de imagen. (Ej: Wikipedia)" onChange={handleInputChange} value={imgAuthor} required />
+                    <input name="confirmationNumber" type="text" className="feedback-input" placeholder="Receipt-confirmation Number" onChange={handleInputChange} value={confirmationNumber} required />
                     <br />
                     <br />
-                    <button type="submit" placeholder='Enviar' className='button-contact' id='submit-button' onClick={handleSubmit}>Enviar</button>
+                    <button type="submit" placeholder='Send' className='button-contact' id='submit-button' onClick={handleSubmit}>Send</button>
                 </div>
             </div>
 
-            <Footer />
         </>
 
 

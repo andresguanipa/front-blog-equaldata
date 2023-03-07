@@ -22,13 +22,17 @@ const Home = () => {
 
   useEffect(() => {
 
-    axios.get('/publication/all').then(res => {
+    axios.get('/payment/all').then(res => {
       setBlogs(res.data.data);
 
     }).catch(err => {
       console.log(err);
 
     });
+
+/*     setTimeout(()=> {
+
+    },10000) */
 
 
   }, []);

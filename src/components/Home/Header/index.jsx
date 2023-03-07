@@ -1,9 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './styles.css';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 
 const Header = () => {
+
+  const state = useSelector(state => state);
 
   AOS.init();
 
@@ -12,15 +15,15 @@ const Header = () => {
       <header className='home-header'>
 
         <div data-aos="fade-left" data-aos-duration="1400">
-          <h2>Bienvenidos a</h2>
+          <h2>Bienvenido, </h2>
           <h1>
-            <span> Blog Venezuela </span>
+            <span> {state.auth.firstname} </span>
           </h1>
         </div>
 
         <div data-aos="fade-left" data-aos-duration="1000">
           <p>
-            El lugar para expresar tus ideas
+            A continuación, los últimos pagos enviados
           </p>
         </div>
 

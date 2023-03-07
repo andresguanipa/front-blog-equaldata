@@ -13,10 +13,11 @@ const BlogItem = ({
     content,
     title,
     createdAt,
-    user,
-    img,
+    client,
+    billImage,
     categories,
-    id,
+    idPayment,
+    confirmationNumber
   },
 
 }) => {
@@ -31,19 +32,22 @@ const BlogItem = ({
     <>
 
 
-      <div className='blogItem-wrap' key={id} data-aos="fade-right" data-aos-duration="1200">
-        <Link className='blogItem-link' to={`/blog/${id}`}>
-          <img className='blogItem-cover' src={img} alt='cover' loading='lazy' />
-          <Chip label={categories} />
-          <h3>{title}</h3>
+      <div className='blogItem-wrap' key={idPayment} data-aos="fade-right" data-aos-duration="1200">
+        <Link className='blogItem-link' to={`/blog/${idPayment}`}>
+          <img className='blogItem-cover' src={billImage} alt='cover' loading='lazy' />
+
+{/*           <Chip label={categories} />
+ */}          
+          <h3>{confirmationNumber}</h3>
         </Link>
 
-        <Markup className='blogItem-desc' content={content.substr(0,360)} />
+{/*         <Markup className='blogItem-desc' content={content.substr(0,360)} />
+ */}        
         <footer>
           <div className='blogItem-author'>
-            <img src={user !== null ? user.img : URL_IMG} alt='avatar' loading='lazy' />
+            <img src={URL_IMG} alt='avatar' loading='lazy' />
             <div>
-              <h6>{user !== null ? user.name : 'Unknown'}</h6>
+              <h6>{client !== null ? client.name : 'Unknown'}</h6>
               <p>{fecha}</p>
             </div>
           </div>

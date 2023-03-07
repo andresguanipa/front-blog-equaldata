@@ -25,9 +25,9 @@ const Footer = () => {
 
 
 
-                    <a href="/"><b>Inicio</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href="/upload"><b>Publicar</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href="/profile"><b>Editar Perfil</b></a>
+                    <a href="/blog"><b>Inicio</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="/blog/upload"><b>Publicar</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="/blog/profile"><b>Editar Perfil</b></a>
                 </p>
                 
                 <div className="footer-menu">

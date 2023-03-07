@@ -89,7 +89,7 @@ const Profile = () => {
                         footer: 'Copyright © 2023 - Todos los derechos reservados',
                      }).then(data => {
 
-                        window.location.href = '/';
+                        window.location.href = '/blog';
 
                      });
 

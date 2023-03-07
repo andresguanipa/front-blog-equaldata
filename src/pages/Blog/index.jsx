@@ -15,15 +15,12 @@ const Blog = () => {
 
   let blogState = {
     data: false,
-    title: '',
-    content: '',
+    client: '',
+    dni: '',
     createdAt: '',
     img: '',
-    name: '',
-    lastname: '',
-    userImg: '',
-    authorImg: '',
-
+    amount: '',
+    confirmationNumber: '',
   }
 
   AOS.init();
@@ -32,12 +29,12 @@ const Blog = () => {
 
   useEffect(() => {
 
-    axios.get(`/publication/${id}`)
+    axios.get(`/payment/${id}`)
       .then(res => {
 
-        console.log(res.data.ok);
-
         if (res.data.ok) {
+
+          console.log(res.data);
 
           let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
           let date = new Date(res.data.data.createdAt);
@@ -45,11 +42,12 @@ const Blog = () => {
 
           setBlog({
             data: true,
-            title: res.data.data.title,
-            content: res.data.data.content,
+            client: res.data.data.client.name,
+            dni: res.data.data.client.dni,
             createdAt: fecha,
-            img: res.data.data.img,
-            authorImg: res.data.data.imgAuthor,
+            billImage: res.data.data.billImage,
+            amount: res.data.data.amount,
+            confirmationNumber: res.data.data.confirmationNumber
           });
 
           TabTitle(`${res.data.data.title} | Blog Venezuela`);
@@ -83,22 +81,19 @@ const Blog = () => {
               <div className='blog-wrap' data-aos-delay="200" data-aos="fade-right">
                 <header>
                   <p className='blog-date'>Publicado el {blog.createdAt}</p>
-                  <h1>{blog.title}</h1>
+                  <h1>Client: {blog.client} (DNI: {blog.dni})</h1>
                   <br />
                 </header>
-                <img src={blog.img} alt='cover' className='blog-img' />
+                <img src={blog.billImage} alt='cover' className='blog-img' />
                 <br />
                 <br />
 
-                <Markup className='blog-content' content={blog.content} />
+                <Markup className='blog-content' content={`<b>Amount:</b> ${blog.amount}`} />
+                <br />
+                <Markup className='blog-content' content={`<b>Confirmation Number:</b> ${blog.confirmationNumber}`} />
+                <br />
 
                 <hr />
-
-                <br />
-
-                <Markup className='blog-img-txt' content={`Imagen: ${blog.authorImg}`} />
-
-                <br />
                 <br />
 
 

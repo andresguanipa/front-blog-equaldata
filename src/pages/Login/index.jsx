@@ -66,9 +66,6 @@ const Login = () => {
                      <input type="submit" id="submit-button" value="Iniciar sesion"></input>
                   </div>
 
-                  <a href="/signup">¿No tienes cuenta? Registrate</a>
-
-                  <br />
                </form>
             </div>
          </div>

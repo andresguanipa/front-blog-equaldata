@@ -1,18 +1,25 @@
 .intro img {
     width: 100%;
     padding-top: 8px;
-    background-color: #030207;
+    -webkit-filter: blur(8px);
+    -moz-filter: blur(8px);
+    -o-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+    z-index: 1;
 }
 
 .intro h2 {
-    color: white;
-    font-size: 3.5rem;
+    color: black;
+    font-size: 4rem;
     font-weight: 700;
     position: absolute;
     margin-top: 13%;
-    margin-left: 7%;
+    margin-left: 15%;
     width: 70%;
-    text-shadow: 10px 10px 12px rgba(0, 0, 0, 0.8);
+    text-shadow: 10px 10px 12px rgba(168, 168, 168, 0.8);
+    text-align: center;
+    z-index: 9999;
 }
 
 .intro h4 {
@@ -27,14 +34,7 @@
 
 @media (max-width: 1350px) {
 
-    .intro h2 {
-        font-size: 3.2rem;
-        margin-top: 12%;
-        width: 90%;
-    }
-
     .intro h4 {
-        font-size: 1.6rem;
         margin-top: 31%;
     }
 
@@ -42,11 +42,6 @@
 
 
 @media (max-width: 1160px) {
-
-    .intro h2 {
-        font-size: 2.8rem;
-        margin-top: 10%;
-    }
 
     .intro h4 {
         font-size: 1.6rem;
@@ -161,11 +156,6 @@
     .steve {
         content: url("./images/steve3.png");
     }
-
-    .intro img {
-        background-color: #000;
-    }
-    
 
 
 }
